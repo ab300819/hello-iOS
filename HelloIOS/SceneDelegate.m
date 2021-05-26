@@ -6,6 +6,7 @@
 //
 
 #import "SceneDelegate.h"
+#import "ViewController.h"
 
 @interface SceneDelegate ()
 
@@ -21,9 +22,12 @@
     
     UITabBarController *tabBarController=[[UITabBarController alloc]init];
     
-    UIViewController *viewContoller1=[[UIViewController alloc]init];
-    viewContoller1.view.backgroundColor=[UIColor redColor];
-    viewContoller1.tabBarItem.title=@"新闻";
+    ViewController *viewController=[[ViewController alloc]init];
+    UINavigationController *navigationController=[[UINavigationController alloc]initWithRootViewController:viewController];
+    
+//    UIViewController *viewContoller1=[[UIViewController alloc]init];
+//    viewContoller1.view.backgroundColor=[UIColor redColor];
+    navigationController.tabBarItem.title=@"新闻";
     
     UIViewController *viewContoller2=[[UIViewController alloc]init];
     viewContoller2.view.backgroundColor=[UIColor greenColor];
@@ -37,7 +41,7 @@
     viewContoller4.view.backgroundColor=[UIColor grayColor];
     viewContoller4.tabBarItem.title=@"我的";
     
-    [tabBarController setViewControllers:@[viewContoller1,viewContoller2,viewContoller3,viewContoller4]];
+    [tabBarController setViewControllers:@[navigationController,viewContoller2,viewContoller3,viewContoller4]];
     
     self.window.rootViewController=tabBarController;
     [self.window makeKeyAndVisible];

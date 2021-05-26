@@ -81,8 +81,20 @@
     TestView *view=[[TestView alloc]init];
     view.backgroundColor=[UIColor greenColor];
     view.frame=CGRectMake(100, 100, 100, 100);
+    self.view.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:view];
+    
+    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pushController)];
+    
+    [view addGestureRecognizer:tapGesture];
 }
 
+-(void)pushController{
+    UIViewController *viewController= [[UIViewController alloc]init];
+    viewController.view.backgroundColor=[UIColor whiteColor];
+    viewController.navigationItem.title=@"内容";
+    viewController.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"搜索" style:UIBarButtonItemStylePlain target:self action:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 @end
