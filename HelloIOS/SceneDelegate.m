@@ -20,14 +20,11 @@
     self.window=[[UIWindow alloc]initWithWindowScene:windowScense];
     self.window.frame=windowScense.coordinateSpace.bounds;
     
-    UITabBarController *tabBarController=[[UITabBarController alloc]init];
-    
     ViewController *viewController=[[ViewController alloc]init];
-    UINavigationController *navigationController=[[UINavigationController alloc]initWithRootViewController:viewController];
     
 //    UIViewController *viewContoller1=[[UIViewController alloc]init];
 //    viewContoller1.view.backgroundColor=[UIColor redColor];
-    navigationController.tabBarItem.title=@"新闻";
+    viewController.tabBarItem.title=@"新闻";
     
     UIViewController *viewContoller2=[[UIViewController alloc]init];
     viewContoller2.view.backgroundColor=[UIColor greenColor];
@@ -41,9 +38,12 @@
     viewContoller4.view.backgroundColor=[UIColor grayColor];
     viewContoller4.tabBarItem.title=@"我的";
     
-    [tabBarController setViewControllers:@[navigationController,viewContoller2,viewContoller3,viewContoller4]];
+    UITabBarController *tabBarController=[[UITabBarController alloc]init];
+    [tabBarController setViewControllers:@[viewController,viewContoller2,viewContoller3,viewContoller4]];
     
-    self.window.rootViewController=tabBarController;
+    UINavigationController *navigationController=[[UINavigationController alloc]initWithRootViewController:tabBarController];
+    
+    self.window.rootViewController=navigationController;
     [self.window makeKeyAndVisible];
 }
 
